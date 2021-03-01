@@ -19,8 +19,8 @@ from random import randint
 from misc import winningTest, legalMove
 
 BOARD_SIZE = 11   # size of the board is 11-by-11
-X_IN_A_LINE = 5   # play the standard game with 5 stones in a line
-TIME_OUT = 5      # player must return a move within 5 seconds
+X_IN_A_LINE = 5  # play the standard game with 5 stones in a line
+TIME_OUT = 5     # player must return a move within 5 seconds
 
 # an empty class to host the time-out exception
 class TimeOutException(Exception):
@@ -109,14 +109,18 @@ def main():
             insisting player 2 must always make a move after player 1 will lead to a loss for player 2 where
             a draw was possible
             """
-            if not 0 in board:
-                print("Draw.")
-                end = True
-                break
+
             if id != 0:
                 print("Winner: " + str(id))
                 end = True
                 break
+
+            if not 0 in board:
+                print("Draw.")
+                end = True
+                break
+
+
         if end:
             break        
 
