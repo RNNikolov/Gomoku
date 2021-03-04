@@ -1,4 +1,7 @@
 """
+Group 2 - Radoslav Nikolov 974054
+         Jumaira Miller 983101
+
 Strategy:
     - First move will always be either center position or the position directly above the center. This is the position
     that gives us the greatest advantage because it allows us to expand in all directions equally.
@@ -60,7 +63,10 @@ Algorithms experimented/Stages of implementation:
         because we do not expect the successor branches to have a higher utility. To be able to further
         go down a deeper depth, we also apply an artificial cutoff to the branching factor and only consider the states
         that would result in the highest utilities.
-            - through experimentation we have found that ... gave the best result because ...
+            - through experimentation we have found that artificial cutoff depth 4 with 10 elements per depth gave
+            the best result because the player is able to make a move in the 5 seconds window given and going to depth 4
+            and exploring the 10 most promising nodes from the sorted list mentioned above always provides the best move
+            for the given board in favor of the current player.
 """
 
 
@@ -80,7 +86,7 @@ class Player(GomokuAgent):
             if board[5, 5] == 0:
                 return 5, 5
             else:
-                return 4, 5  # l_moves[np.random.randint(0, len(l_moves)-1)]
+                return 4, 5
         else:
             win, moveLock = self.immediate_win_position(board, l_moves)
             if win:
